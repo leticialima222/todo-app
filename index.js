@@ -7,7 +7,7 @@ app.engine('handlebars', exphbs.engine())
 app.set('viem engine', 'handlebars')
 
 app.get('/', (requisicao, resposta) => {
-    resposta.send("Olá, mundo!")
+    resposta.render('home.handlebars')
 })
 
 app.listen(3000, () => {
