@@ -71,6 +71,31 @@ app.post('/criar', (requisicao, resposta) => {
     })
 })
 
+app.get('/ativas', (requisicao, resposta) => {
+    const sql = `
+        SELECT * FROM tarefas
+        WHERE completa = 0
+    `
+
+    conexao.query(sql, (erro, dados) => {
+        if(erro) {
+            return console.log(erro)
+        }
+
+        const tarefas = dados.map((dado) => {
+            return {
+                id: dado.id,
+                descricao: dado.descricao,
+                complete: false
+            }
+        })
+
+        const quantidadeTarefas = tarefas.length
+
+        resposta.render('ativas', { tarefas, quantidadeTarefas})
+    })
+})
+
 app.get('/', (requisicao, resposta) => {
     const sql = 'SELECT * FOM tarefas'
 
@@ -97,7 +122,7 @@ app.get('/', (requisicao, resposta) => {
       
     })
 })
-
+ 
 const conexao = mysql.createConnection({
     host: "localhost",
     user: "root",
