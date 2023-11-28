@@ -52,11 +52,9 @@ app.get('/', (requisicao, resposta) => {
             }
         })
 
-        
-            
+        resposta.render('home.handlebars', {tarefas})
+      
     })
-
-    resposta.render('home.handlebars')
 })
 
 const conexao = mysql.createConnection({
