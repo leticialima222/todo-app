@@ -15,6 +15,16 @@ app.use(express.urlencoded({
 
 app.use(express.json())
 
+app.post('/completar', (requisicao, resposta) => {
+    const id = requisicao.body.id
+
+    const sql = `
+        UPDATE tarefas
+        SET completa = '1'
+        WHERE id = ${id}
+    `
+})
+
 
 app.post('/criar', (requisicao, resposta) => {
     const descricao = requisição.body.descricao
