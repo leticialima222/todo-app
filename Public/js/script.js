@@ -39,6 +39,7 @@ function verificarTema() {
             body.classList.add("ligth")
             button.innerHTML = `<img src="/imagens/moon-icon.png" alt="ícone de lua">`
         }
-       
     }
 }
+
+verificarTema()
